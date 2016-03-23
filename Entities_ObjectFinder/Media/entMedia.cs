@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Entities_ObjectFinder.Media
 {
     [DataContract]
-    public class entMedia
+    public class entMedia:Entities_ObjectFinder.Objeto.entObjeto
     {
         [DataMember]
         public int idMedia { get; set; }

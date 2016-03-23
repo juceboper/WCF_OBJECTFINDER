@@ -8,6 +8,7 @@ namespace Business_ObjectFinder.Logica
 {
     public static class Log_Objectfinder
     {
+        //--------INSERT--------------------//
         public static void log_Crear_Usuario(Entities_ObjectFinder.Usuario.entUsuario Usuario)
         {
             Dao_ObjectFinder.Usuario.daoUsuario objUsuario = new Dao_ObjectFinder.Usuario.daoUsuario();
@@ -62,6 +63,91 @@ namespace Business_ObjectFinder.Logica
             Dao_ObjectFinder.Media.daoMedia objMedia = new Dao_ObjectFinder.Media.daoMedia();
 
             objMedia.dao_Actualizar_Media(Media);
+        }
+
+        //-------GETTER---------------//
+        public static ICollection<Entities_ObjectFinder.Categoria.entCategoria> log_get_Categoria()
+        {
+            Dao_ObjectFinder.Categoria.daoCategoria objCategoria = new Dao_ObjectFinder.Categoria.daoCategoria();
+
+            return objCategoria.dao_get_Categoria();
+        }
+
+        public static ICollection<Entities_ObjectFinder.Estado.entEstado> log_get_Estado()
+        {
+            Dao_ObjectFinder.Estado.daoEstado objEstado = new Dao_ObjectFinder.Estado.daoEstado();
+
+            return objEstado.dao_get_Estado();
+        }
+
+        public static ICollection<Entities_ObjectFinder.Facultad.entFacultad> log_get_Facultad()
+        {
+            Dao_ObjectFinder.Facultad.daoFacultad objFacultad = new Dao_ObjectFinder.Facultad.daoFacultad();
+
+            return objFacultad.dao_get_Facultad();
+        }
+
+        public static ICollection<Entities_ObjectFinder.Media.entMedia> log_Get_MediaxObjeto(int idObjeto)
+        {
+            Dao_ObjectFinder.Media.daoMedia objMedia = new Dao_ObjectFinder.Media.daoMedia();
+
+            return objMedia.dao_Get_MediaxObjeto(idObjeto);
+        }
+
+        public static ICollection<Entities_ObjectFinder.Notificacion.entNotificacion> log_Get_Notificacion(int idObjeto)
+        {
+            Dao_ObjectFinder.Notificacion.daoNotificacion objNotificacion = new Dao_ObjectFinder.Notificacion.daoNotificacion();
+
+            return objNotificacion.dao_Get_Notificacion(idObjeto);
+        }
+
+        public static ICollection<Entities_ObjectFinder.Objeto.entObjeto> log_Get_Objeto()
+        {
+            Dao_ObjectFinder.Objeto.daoObjeto objObjeto = new Dao_ObjectFinder.Objeto.daoObjeto();
+
+            return objObjeto.dao_Get_Objeto();
+        }
+
+        public static ICollection<Entities_ObjectFinder.Media.entMedia> log_Get_Media_All()
+        {
+            Dao_ObjectFinder.Media.daoMedia objMedia = new Dao_ObjectFinder.Media.daoMedia();
+
+            return objMedia.dao_Get_Media_All();
+        }
+
+        public static ICollection<Entities_ObjectFinder.Usuario.entUsuario> log_Get_Usuario()
+        {
+            Dao_ObjectFinder.Usuario.daoUsuario objUsuario = new Dao_ObjectFinder.Usuario.daoUsuario();
+
+            return objUsuario.dao_Get_Usuario();
+        }
+
+        public static ICollection<Entities_ObjectFinder.Objeto.entObjeto> log_Get_ObjetoxUsuario(int idUsuario)
+        {
+            Dao_ObjectFinder.Objeto.daoObjeto objObjeto = new Dao_ObjectFinder.Objeto.daoObjeto();
+
+            return objObjeto.dao_Get_ObjetoxUsuario(idUsuario);
+        }
+
+        public static Int32 dao_Get_Nro_Objetos()
+        {
+            Dao_ObjectFinder.Objeto.daoObjeto objObjeto = new Dao_ObjectFinder.Objeto.daoObjeto();
+
+            return objObjeto.dao_Get_Nro_Objetos();
+        }
+
+        public static Int32 dao_Get_Nro_Objetos(int idEstado)
+        {
+            Dao_ObjectFinder.Objeto.daoObjeto objObjeto = new Dao_ObjectFinder.Objeto.daoObjeto();
+
+            return objObjeto.dao_Get_Nro_Objetos(idEstado);
+        }
+
+        public static ICollection<Entities_ObjectFinder.Objeto.entObjeto> dao_Get_Objeto(int idEstado)
+        {
+            Dao_ObjectFinder.Objeto.daoObjeto objObjeto = new Dao_ObjectFinder.Objeto.daoObjeto();
+
+            return objObjeto.dao_Get_Objeto(idEstado);
         }
     }
 }
