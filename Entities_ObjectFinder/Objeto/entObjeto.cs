@@ -11,6 +11,8 @@ namespace Entities_ObjectFinder.Objeto
     public class entObjeto
     {
         [DataMember]
+        public int idObjeto { get; set; }
+        [DataMember]
         public int idCategoria { get; set; }
         [DataMember]
         public string nombreObjeto { get; set; }

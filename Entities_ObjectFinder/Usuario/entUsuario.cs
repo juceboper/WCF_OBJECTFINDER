@@ -11,6 +11,8 @@ namespace Entities_ObjectFinder.Usuario
     public class entUsuario
     {
         [DataMember]
+        public int idUsuario { get; set; }
+        [DataMember]
         public string primerNombre { get; set; }
         [DataMember]
         public string segundoNombre { get; set; }
@@ -36,6 +38,8 @@ namespace Entities_ObjectFinder.Usuario
         public string usuario { get; set; }
         [DataMember]
         public string clave { get; set; }
+        [DataMember]
+        public DateTime fechaRegistro { get; set; }
 
     }
 }

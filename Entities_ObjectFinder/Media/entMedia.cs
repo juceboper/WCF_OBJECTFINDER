@@ -11,6 +11,8 @@ namespace Entities_ObjectFinder.Media
     public class entMedia
     {
         [DataMember]
+        public int idMedia { get; set; }
+        [DataMember]
         public int idObjeto { get; set; }
         [DataMember]
         public string tipoImagen { get; set; }

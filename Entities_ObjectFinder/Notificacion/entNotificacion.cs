@@ -11,10 +11,14 @@ namespace Entities_ObjectFinder.Notificacion
     public class entNotificacion
     {
         [DataMember]
+        public int idNotificacion { get; set; }
+        [DataMember]
         public int idObjeto { get; set; }
         [DataMember]
         public int idUsuario { get; set; }
         [DataMember]
         public string mensajeNotificacion { get; set; }
+        [DataMember]
+        public DateTime fechaNotificacion { get; set; }
     }
 }
