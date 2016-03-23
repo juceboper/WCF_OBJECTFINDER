@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categoria\entCategoria.cs" />
+    <Compile Include="Estado\entEstado.cs" />
+    <Compile Include="Facultad\entFacultad.cs" />
     <Compile Include="Media\entMedia.cs" />
     <Compile Include="Notificacion\entNotificacion.cs" />
     <Compile Include="Objeto\entObjeto.cs" />
