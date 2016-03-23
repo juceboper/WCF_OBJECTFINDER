@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Datos\BaseDatos.cs" />
+    <Compile Include="Datos\BaseDatos.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Media\daoMedia.cs" />
     <Compile Include="Notificacion\daoNotificacion.cs" />
     <Compile Include="Objeto\daoObjeto.cs" />
