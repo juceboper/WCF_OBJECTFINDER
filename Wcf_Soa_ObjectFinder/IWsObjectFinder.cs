@@ -11,6 +11,7 @@ namespace Wcf_Soa_ObjectFinder
     [ServiceContract]
     public interface IWsObjectFinder
     {
+        //-----------------INSERT-----------------------------//
         [OperationContract]
         void Crear_Usuario(Entities_ObjectFinder.Usuario.entUsuario Usuario);
 
@@ -33,6 +34,43 @@ namespace Wcf_Soa_ObjectFinder
         void Crear_Media(Entities_ObjectFinder.Media.entMedia Media);
 
         [OperationContract]
-        void log_Actualizar_Media(Entities_ObjectFinder.Media.entMedia Media);
+        void Actualizar_Media(Entities_ObjectFinder.Media.entMedia Media);
+
+        //-------------GETTER--------------------------//
+        [OperationContract]
+        ICollection<Entities_ObjectFinder.Categoria.entCategoria> Get_Categoria();
+
+        [OperationContract]
+        ICollection<Entities_ObjectFinder.Estado.entEstado> Get_Estado();
+
+        [OperationContract]
+        ICollection<Entities_ObjectFinder.Facultad.entFacultad> Get_Facultad();
+
+        [OperationContract]
+        ICollection<Entities_ObjectFinder.Media.entMedia> Get_MediaxObjeto(int idObjeto);
+
+        [OperationContract]
+        ICollection<Entities_ObjectFinder.Notificacion.entNotificacion> Get_Notificacion(int idObjeto);
+
+        [OperationContract]
+        ICollection<Entities_ObjectFinder.Objeto.entObjeto> Get_Objeto();
+
+        [OperationContract]
+        ICollection<Entities_ObjectFinder.Media.entMedia> Get_Media_All();
+
+        [OperationContract]
+        ICollection<Entities_ObjectFinder.Usuario.entUsuario> Get_Usuario();
+
+        [OperationContract]
+        ICollection<Entities_ObjectFinder.Objeto.entObjeto> Get_ObjetoxUsuario(int idUsuario);
+
+        [OperationContract]
+        Int32 Get_Nro_Objetos();
+
+        [OperationContract]
+        Int32 Get_Nro_Objetos(int idEstado);
+
+        [OperationContract]
+        ICollection<Entities_ObjectFinder.Objeto.entObjeto> Get_Objeto(int idEstado);
     }
 }
