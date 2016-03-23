@@ -39,7 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logica\Log_Objectfinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dao_ObjectFinder\Dao_ObjectFinder.csproj">
+      <Project>{e7cd25fb-f9e4-4b46-bad8-44c53120e350}</Project>
+      <Name>Dao_ObjectFinder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities_ObjectFinder\Entities_ObjectFinder.csproj">
+      <Project>{bacc6785-53ea-4bda-8d2e-21b323ddac36}</Project>
+      <Name>Entities_ObjectFinder</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
