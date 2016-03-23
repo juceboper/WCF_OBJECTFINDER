@@ -13,42 +13,98 @@ namespace Wcf_Soa_ObjectFinder
 
         public void Crear_Usuario(Entities_ObjectFinder.Usuario.entUsuario Usuario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Usuario(Usuario);
+            }
+            catch(FaultException ex)
+            {          
+                throw new FaultException(ex.Message);
+            }
         }
 
         public void Actualizar_Usuario(Entities_ObjectFinder.Usuario.entUsuario Usuario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Business_ObjectFinder.Logica.Log_Objectfinder.log_Actualizar_Usuario(Usuario);
+            }
+            catch(FaultException ex)
+            {              
+                throw new FaultException(ex.Message);
+            }
         }
 
         public void Crear_Registro(Entities_ObjectFinder.Registro.entRegistro Registro)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Registro(Registro);
+            }
+            catch(FaultException ex)
+            {          
+                throw new FaultException(ex.Message);
+            }
         }
 
         public void Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Objeto(Objeto);
+            }
+            catch(FaultException ex)
+            {            
+                throw new FaultException(ex.Message);
+            }
         }
 
         public void Actualizar_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Business_ObjectFinder.Logica.Log_Objectfinder.log_Actualizar_Objeto(Objeto);
+            }
+            catch(FaultException ex)
+            {          
+                throw new FaultException(ex.Message);
+            }
         }
 
         public void Crear_Notificacion(Entities_ObjectFinder.Notificacion.entNotificacion Notificacion)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Notificacion(Notificacion);
+            }
+            catch(FaultException ex)
+            {           
+                throw new FaultException(ex.Message);
+            }
         }
 
         public void Crear_Media(Entities_ObjectFinder.Media.entMedia Media)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Media(Media);
+            }
+            catch(FaultException ex)
+            {         
+                throw new FaultException(ex.Message);
+            }
         }
 
         public void log_Actualizar_Media(Entities_ObjectFinder.Media.entMedia Media)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Business_ObjectFinder.Logica.Log_Objectfinder.log_Actualizar_Media(Media);
+            }
+            catch(FaultException ex)
+            {
+                throw new FaultException(ex.Message);
+            }
         }
     }
 }
