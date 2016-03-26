@@ -5,12 +5,13 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace Wcf_Soa_ObjectFinder
+namespace Wcf_ObjectFinder
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "WsObjectFinder" in both code and config file together.
+    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "WsObjectFinder" en el código, en svc y en el archivo de configuración a la vez.
+    // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione WsObjectFinder.svc o WsObjectFinder.svc.cs en el Explorador de soluciones e inicie la depuración.
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, Namespace = "http://localhost:8080/Wcf_ObjectFinder/Servicio/")]
     public class WsObjectFinder:IWsObjectFinder
     {
-
         public void Crear_Usuario(Entities_ObjectFinder.Usuario.entUsuario Usuario)
         {
             try
@@ -18,7 +19,7 @@ namespace Wcf_Soa_ObjectFinder
                 Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Usuario(Usuario);
             }
             catch(FaultException ex)
-            {          
+            {
                 throw new FaultException(ex.Message);
             }
         }
@@ -30,7 +31,7 @@ namespace Wcf_Soa_ObjectFinder
                 Business_ObjectFinder.Logica.Log_Objectfinder.log_Actualizar_Usuario(Usuario);
             }
             catch(FaultException ex)
-            {              
+            {
                 throw new FaultException(ex.Message);
             }
         }
@@ -42,7 +43,7 @@ namespace Wcf_Soa_ObjectFinder
                 Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Registro(Registro);
             }
             catch(FaultException ex)
-            {          
+            {
                 throw new FaultException(ex.Message);
             }
         }
@@ -54,7 +55,7 @@ namespace Wcf_Soa_ObjectFinder
                 Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Objeto(Objeto);
             }
             catch(FaultException ex)
-            {            
+            {
                 throw new FaultException(ex.Message);
             }
         }
@@ -66,7 +67,7 @@ namespace Wcf_Soa_ObjectFinder
                 Business_ObjectFinder.Logica.Log_Objectfinder.log_Actualizar_Objeto(Objeto);
             }
             catch(FaultException ex)
-            {          
+            {
                 throw new FaultException(ex.Message);
             }
         }
@@ -78,7 +79,7 @@ namespace Wcf_Soa_ObjectFinder
                 Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Notificacion(Notificacion);
             }
             catch(FaultException ex)
-            {           
+            {
                 throw new FaultException(ex.Message);
             }
         }
@@ -90,7 +91,7 @@ namespace Wcf_Soa_ObjectFinder
                 Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Media(Media);
             }
             catch(FaultException ex)
-            {         
+            {
                 throw new FaultException(ex.Message);
             }
         }
@@ -195,7 +196,7 @@ namespace Wcf_Soa_ObjectFinder
         {
             try
             {
-              return  Business_ObjectFinder.Logica.Log_Objectfinder.log_Get_Usuario();
+                return Business_ObjectFinder.Logica.Log_Objectfinder.log_Get_Usuario();
             }
             catch(FaultException ex)
             {

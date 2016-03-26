@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Text;
 
-namespace Wcf_Soa_ObjectFinder
+namespace Wcf_ObjectFinder
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IWsObjectFinder" in both code and config file together.
-    [ServiceContract]
+    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IWsObjectFinder" en el código y en el archivo de configuración a la vez.
+    [ServiceContract(Namespace = "http://localhost:8080/Wcf_ObjectFinder/Servicio/")]
     public interface IWsObjectFinder
     {
         //-----------------INSERT-----------------------------//
