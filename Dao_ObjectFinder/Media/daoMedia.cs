@@ -1,4 +1,5 @@
 ﻿using Dao_ObjectFinder.Datos;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,14 +18,35 @@ namespace Dao_ObjectFinder.Media
 
         }
 
+        static private string GetConnectionString()
+        {
+            // To avoid storing the connection string in your code, 
+            // you can retrieve it from a configuration file. 
+            return "DATA SOURCE=proyectoud.cuegptboywjw.us-west-2.rds.amazonaws.com:1521/OBJECTF;PERSIST SECURITY INFO=True;USER ID=ADMIN;Password=Pa$$w0rd";
+        }
+
         public void dao_Crear_Media(Entities_ObjectFinder.Media.entMedia Media)
         {
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_insert.sp_insert_media", new object[] { Media }))
+                string connectionString = GetConnectionString();
+                using(OracleConnection connection = new OracleConnection())
                 {
-                    dbDatos.ExecuteNonQuery(cmd);
-                }
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+
+                    using(OracleCommand cmd = connection.CreateCommand())//GetStoredProcCommand("pkg_insert.sp_insert_media"))
+                    {
+                        cmd.CommandText = "pkg_insert.sp_insert_media";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("PID_OBJETO", OracleDbType.Int32).Value = Media.idObjeto;
+                        cmd.Parameters.Add("PTIPO_IMAGEN", OracleDbType.Varchar2).Value = Media.tipoImagen;
+                        cmd.Parameters.Add("PNOMBRE_IMAGEN", OracleDbType.Varchar2).Value = Media.nombreImagen;
+                        cmd.Parameters.Add("PIMAGEN", OracleDbType.Blob).Value = Media.imagen;
+
+                        cmd.ExecuteNonQuery();
+                    }
+              }
             }
             catch(Exception)
             {
@@ -94,7 +116,7 @@ namespace Dao_ObjectFinder.Media
 
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_objetosximagen", new object[] { null }))
+                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_objetosximagen"))
                 {
                     using(IDataReader dbReader = dbDatos.ExecuteReader(cmd))
                     {

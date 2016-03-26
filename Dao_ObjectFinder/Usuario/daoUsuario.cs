@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dao_ObjectFinder.Datos;
 using System.Data;
 
@@ -19,8 +16,23 @@ namespace Dao_ObjectFinder.Usuario
         {
             try 
 	        {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_insert.sp_insert_usuario",new object[]{ Usuario }))
+                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_insert.sp_insert_usuario"))
 	            {
+                    dbDatos.AddInParameter(cmd, "PNOMBRE1", DbType.String, Usuario.primerNombre);
+                    dbDatos.AddInParameter(cmd, "PNOMBRE2", DbType.String, Usuario.segundoNombre);
+                    dbDatos.AddInParameter(cmd, "PAPELLIDO1", DbType.String, Usuario.primerApellido);
+                    dbDatos.AddInParameter(cmd, "PAPELLIDO2", DbType.String, Usuario.segundoApellido);
+                    dbDatos.AddInParameter(cmd, "PFECHA_REGISTRO", DbType.DateTime, Usuario.fechaRegistro);
+                    dbDatos.AddInParameter(cmd, "PID_ESTADO", DbType.Int32, Usuario.idEstado);
+                    dbDatos.AddInParameter(cmd, "PTELEFONO", DbType.Int32, Usuario.telefono);
+                    dbDatos.AddInParameter(cmd, "PCELULAR", DbType.Int32, Usuario.celular);
+                    dbDatos.AddInParameter(cmd, "PEMAIL", DbType.String, Usuario.email);
+                    dbDatos.AddInParameter(cmd, "PFECHA_NACIMIENTO", DbType.DateTime, Usuario.fechaNacimiento);
+                    dbDatos.AddInParameter(cmd, "PGENERO", DbType.String, Usuario.genero);
+                    dbDatos.AddInParameter(cmd, "PID_INTEGRACION", DbType.Int32, Usuario.idIntegracion);
+                    dbDatos.AddInParameter(cmd, "PUSUARIO", DbType.String, Usuario.usuario);
+                    dbDatos.AddInParameter(cmd, "PCLAVE", DbType.String, Usuario.clave);
+
                     dbDatos.ExecuteNonQuery(cmd);
 	            }
 	        }
@@ -34,8 +46,24 @@ namespace Dao_ObjectFinder.Usuario
         {
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_update.sp_update_usuario", new object[] { Usuario }))
+                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_update.sp_update_usuario"))
                 {
+
+                    dbDatos.AddInParameter(cmd, "PNOMBRE1", DbType.String, Usuario.primerNombre);
+                    dbDatos.AddInParameter(cmd, "PNOMBRE2", DbType.String, Usuario.segundoNombre);
+                    dbDatos.AddInParameter(cmd, "PAPELLIDO1", DbType.String, Usuario.primerApellido);
+                    dbDatos.AddInParameter(cmd, "PAPELLIDO2", DbType.String, Usuario.segundoApellido);
+                    dbDatos.AddInParameter(cmd, "PFECHA_REGISTRO", DbType.DateTime, Usuario.fechaRegistro);
+                    dbDatos.AddInParameter(cmd, "PID_ESTADO", DbType.Int32, Usuario.idEstado);
+                    dbDatos.AddInParameter(cmd, "PTELEFONO", DbType.Int32, Usuario.telefono);
+                    dbDatos.AddInParameter(cmd, "PCELULAR", DbType.Int32, Usuario.celular);
+                    dbDatos.AddInParameter(cmd, "PEMAIL", DbType.String, Usuario.email);
+                    dbDatos.AddInParameter(cmd, "PFECHA_NACIMIENTO", DbType.DateTime, Usuario.fechaNacimiento);
+                    dbDatos.AddInParameter(cmd, "PGENERO", DbType.String, Usuario.genero);
+                    dbDatos.AddInParameter(cmd, "PID_INTEGRACION", DbType.Int32, Usuario.idIntegracion);
+                    dbDatos.AddInParameter(cmd, "PUSUARIO", DbType.String, Usuario.usuario);
+                    dbDatos.AddInParameter(cmd, "PCLAVE", DbType.String, Usuario.clave);
+
                     dbDatos.ExecuteNonQuery(cmd);
                 }
             }
@@ -52,7 +80,7 @@ namespace Dao_ObjectFinder.Usuario
 
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_usuarios", new object[] { null }))
+                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_usuarios"))
                 {
                     using(IDataReader dbReader = dbDatos.ExecuteReader(cmd))
                     {
@@ -83,7 +111,7 @@ namespace Dao_ObjectFinder.Usuario
                             if(dbReader["FECHA_NACIMIENTO"] != null)
                                 objUsuario.fechaNacimiento = DateTime.Parse(dbReader["FECHA_NACIMIENTO"].ToString());
                             if(dbReader["GENERO"] != null)
-                                objUsuario.genero = char.Parse(dbReader["GENERO"].ToString());
+                                objUsuario.genero = dbReader["GENERO"].ToString();
                             if(dbReader["ID_INTEGRACION"] != null)
                                 objUsuario.idIntegracion = int.Parse(dbReader["ID_INTEGRACION"].ToString());
                             if(dbReader["USUARIO"] != null)

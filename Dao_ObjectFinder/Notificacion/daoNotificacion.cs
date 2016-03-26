@@ -20,8 +20,12 @@ namespace Dao_ObjectFinder.Notificacion
         {
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_insert.sp_insert_notificacion", new object[] { Notificacion }))
+                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_insert.sp_insert_notificacion"))
                 {
+                    dbDatos.AddInParameter(cmd, "PID_OBJETO", DbType.Int32, Notificacion.idObjeto);
+                    dbDatos.AddInParameter(cmd, "PID_USUARIO", DbType.Int32, Notificacion.idUsuario);
+                    dbDatos.AddInParameter(cmd, "PMENSAJE_NOTIFICACION", DbType.String, Notificacion.mensajeNotificacion);
+
                     dbDatos.ExecuteNonQuery(cmd);
                 }
             }
@@ -38,8 +42,10 @@ namespace Dao_ObjectFinder.Notificacion
 
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_notificaciones", new object[] { idObjeto }))
+                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_notificaciones"))
                 {
+                    dbDatos.AddInParameter(cmd, "PID_OBJETO", DbType.Int32, idObjeto);
+
                     using(IDataReader dbReader = dbDatos.ExecuteReader(cmd))
                     {
                         while(dbReader.Read())
