@@ -31,7 +31,7 @@ namespace Entities_ObjectFinder.Usuario
         [DataMember]
         public DateTime fechaNacimiento { get; set; }
         [DataMember]
-        public char genero { get; set; }
+        public string genero { get; set; }
         [DataMember]
         public int idIntegracion { get; set; }
         [DataMember]
