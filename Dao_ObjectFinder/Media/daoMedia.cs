@@ -1,5 +1,6 @@
 ﻿using Dao_ObjectFinder.Datos;
 using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -73,11 +74,15 @@ namespace Dao_ObjectFinder.Media
         {
             List<Entities_ObjectFinder.Media.entMedia> lMedia = new List<Entities_ObjectFinder.Media.entMedia>();
             Entities_ObjectFinder.Media.entMedia objMedia;
+            
+            byte[] byteData = new byte[0];
 
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_mediasxobjeto", new object[] { idObjeto }))
+                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_mediasxobjeto"))
                 {
+                    dbDatos.AddInParameter(cmd, "PID_OBJETO", DbType.Int32, idObjeto);
+
                     using(IDataReader dbReader = dbDatos.ExecuteReader(cmd))
                     {
                         while(dbReader.Read())
@@ -91,7 +96,8 @@ namespace Dao_ObjectFinder.Media
                             if(dbReader["TIPO_IMAGEN"] != null)
                                 objMedia.tipoImagen = dbReader["TIPO_IMAGEN"].ToString();
                             if(dbReader["IMAGEN"] != null)
-                                objMedia.imagen = BitConverter.GetBytes(byte.Parse(dbReader["IMAGEN"].ToString()));
+                                byteData = (byte[])((dbReader["IMAGEN"]));
+                                objMedia.imagen = byteData;
                             if(dbReader["NOMBRE_IMAGEN"] != null)
                                 objMedia.nombreImagen = dbReader["NOMBRE_IMAGEN"].ToString();
 
