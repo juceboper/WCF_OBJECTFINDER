@@ -40,11 +40,12 @@ namespace Dao_ObjectFinder.Objeto
         {
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_update.sp_update_objeto", new object[] { Objeto }))
+                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_update.sp_update_objeto"))
                 {
+                    dbDatos.AddInParameter(cmd, "pid_objeto", DbType.Int32, Objeto.idObjeto);
                     dbDatos.AddInParameter(cmd, "PID_CATEGORIA", DbType.Int32, Objeto.idCategoria);
-                    dbDatos.AddInParameter(cmd, "PNOMBRE_OBJETO", DbType.String, Objeto.nombreObjeto);
-                    dbDatos.AddInParameter(cmd, "PPALABRAS_CLAVES", DbType.String, Objeto.palabrasClaves);
+                    dbDatos.AddInParameter(cmd, "pnombre", DbType.String, Objeto.nombreObjeto);
+                    dbDatos.AddInParameter(cmd, "p_pal_clave", DbType.String, Objeto.palabrasClaves);
                     dbDatos.AddInParameter(cmd, "PID_ESTADO", DbType.Int32, Objeto.idEstado);
 
                     dbDatos.ExecuteNonQuery(cmd);
@@ -201,8 +202,10 @@ namespace Dao_ObjectFinder.Objeto
 
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_objetosxestado", new object[] { idEstado }))
+                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_objetosxestado"))
                 {
+                    dbDatos.AddInParameter(cmd, "PID_ESTADO", DbType.Int32, idEstado);
+
                     using(IDataReader dbReader = dbDatos.ExecuteReader(cmd))
                     {
                         while(dbReader.Read())

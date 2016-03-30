@@ -59,9 +59,23 @@ namespace Dao_ObjectFinder.Media
         {
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_update.sp_update_media", new object[] { Media }))
+                string connectionString = GetConnectionString();
+                using(OracleConnection connection = new OracleConnection())
                 {
-                    dbDatos.ExecuteNonQuery(cmd);
+                    connection.ConnectionString = connectionString;
+                    connection.Open();
+
+                    using(OracleCommand cmd = connection.CreateCommand())
+                    {
+                        cmd.CommandText = "pkg_update.sp_update_media";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("PID_OBJETO", OracleDbType.Int32).Value = Media.idObjeto;
+                        cmd.Parameters.Add("PTIPO_IMAGEN", OracleDbType.Varchar2).Value = Media.tipoImagen;
+                        cmd.Parameters.Add("PNOMBRE_IMAGEN", OracleDbType.Varchar2).Value = Media.nombreImagen;
+                        cmd.Parameters.Add("PIMAGEN", OracleDbType.Blob).Value = Media.imagen;
+
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
             catch(Exception)
@@ -75,8 +89,6 @@ namespace Dao_ObjectFinder.Media
             List<Entities_ObjectFinder.Media.entMedia> lMedia = new List<Entities_ObjectFinder.Media.entMedia>();
             Entities_ObjectFinder.Media.entMedia objMedia;
             
-            byte[] byteData = new byte[0];
-
             try
             {
                 using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_mediasxobjeto"))
@@ -96,8 +108,7 @@ namespace Dao_ObjectFinder.Media
                             if(dbReader["TIPO_IMAGEN"] != null)
                                 objMedia.tipoImagen = dbReader["TIPO_IMAGEN"].ToString();
                             if(dbReader["IMAGEN"] != null)
-                                byteData = (byte[])((dbReader["IMAGEN"]));
-                                objMedia.imagen = byteData;
+                                objMedia.imagen = (byte[])((dbReader["IMAGEN"]));
                             if(dbReader["NOMBRE_IMAGEN"] != null)
                                 objMedia.nombreImagen = dbReader["NOMBRE_IMAGEN"].ToString();
 
@@ -137,7 +148,7 @@ namespace Dao_ObjectFinder.Media
                             if(dbReader["TIPO_IMAGEN"] != null)
                                 objMedia.tipoImagen = dbReader["TIPO_IMAGEN"].ToString();
                             if(dbReader["IMAGEN"] != null)
-                                objMedia.imagen = BitConverter.GetBytes(byte.Parse(dbReader["IMAGEN"].ToString()));
+                                objMedia.imagen = objMedia.imagen = (byte[])((dbReader["IMAGEN"]));
                             if(dbReader["NOMBRE_IMAGEN"] != null)
                                 objMedia.nombreImagen = dbReader["NOMBRE_IMAGEN"].ToString();
                             if(dbReader["NOMBRE_OBJETO"] != null)
