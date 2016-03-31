@@ -23,9 +23,9 @@ namespace Entities_ObjectFinder.Usuario
         [DataMember]
         public int idEstado { get; set; }
         [DataMember]
-        public int telefono { get; set; }
+        public string telefono { get; set; }
         [DataMember]
-        public int celular { get; set; }
+        public string celular { get; set; }
         [DataMember]
         public string email { get; set; }
         [DataMember]
