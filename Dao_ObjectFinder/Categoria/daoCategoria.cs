@@ -22,7 +22,7 @@ namespace Dao_ObjectFinder.Categoria
                 Entities_ObjectFinder.Categoria.entCategoria objCategoria;
             try
             {
-                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_categorias", new object[] { null }))
+                using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_getter.sp_get_categorias"))
                 {
                     using(IDataReader dbReader = dbDatos.ExecuteReader(cmd))
                     {
