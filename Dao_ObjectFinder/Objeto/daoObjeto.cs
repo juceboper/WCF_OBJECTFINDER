@@ -40,6 +40,8 @@ namespace Dao_ObjectFinder.Objeto
         {
             try
             {
+                idObjeto = 0;
+
                 using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_insert.sp_insert_objeto"))
                 {
                     dbDatos.AddInParameter(cmd, "PID_CATEGORIA", DbType.Int32, Objeto.idCategoria);
@@ -47,9 +49,12 @@ namespace Dao_ObjectFinder.Objeto
                     dbDatos.AddInParameter(cmd, "PPALABRAS_CLAVES", DbType.String, Objeto.palabrasClaves);
                     dbDatos.AddInParameter(cmd, "PID_ESTADO", DbType.Int32, Objeto.idEstado);
 
-                    idObjeto = Int32.Parse(dbDatos.GetParameterValue(cmd, "PID_OBJETO").ToString());
+                    dbDatos.AddOutParameter(cmd, "PID_OBJETO", DbType.Int32, 20);               
+                    
 
                     dbDatos.ExecuteNonQuery(cmd);
+
+                    idObjeto = Int32.Parse(dbDatos.GetParameterValue(cmd, "PID_OBJETO").ToString());
                 }
             }
             catch(Exception)
