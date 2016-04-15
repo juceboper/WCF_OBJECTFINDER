@@ -21,8 +21,11 @@ namespace Wcf_ObjectFinder
         [OperationContract]
         void Crear_Registro(Entities_ObjectFinder.Registro.entRegistro Registro);
 
+        //[OperationContract]
+        //void Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto);
+
         [OperationContract]
-        void Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto);
+        void Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto, out Int32 idObjeto);
 
         [OperationContract]
         void Actualizar_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto);

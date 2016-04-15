@@ -30,11 +30,18 @@ namespace Business_ObjectFinder.Logica
             objRegistro.dao_Crear_Registro(Registro);
         }
 
-        public static void log_Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto)
+        //public static void log_Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto)
+        //{
+        //    Dao_ObjectFinder.Objeto.daoObjeto objObjeto = new Dao_ObjectFinder.Objeto.daoObjeto();
+
+        //    objObjeto.dao_Crear_Objeto(Objeto);
+        //}
+
+        public static void log_Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto, out Int32 idObjeto)
         {
             Dao_ObjectFinder.Objeto.daoObjeto objObjeto = new Dao_ObjectFinder.Objeto.daoObjeto();
 
-            objObjeto.dao_Crear_Objeto(Objeto);
+            objObjeto.dao_Crear_Objeto(Objeto,out idObjeto);
         }
 
         public static void log_Actualizar_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto)

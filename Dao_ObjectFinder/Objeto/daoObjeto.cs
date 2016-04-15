@@ -16,7 +16,27 @@ namespace Dao_ObjectFinder.Objeto
 
         }
 
-        public void dao_Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto)
+        //public void dao_Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto)
+        //{
+        //    try
+        //    {
+        //        using(DbCommand cmd = dbDatos.GetStoredProcCommand("pkg_insert.sp_insert_objeto"))
+        //        {
+        //            dbDatos.AddInParameter(cmd, "PID_CATEGORIA", DbType.Int32, Objeto.idCategoria);
+        //            dbDatos.AddInParameter(cmd, "PNOMBRE_OBJETO", DbType.String, Objeto.nombreObjeto);
+        //            dbDatos.AddInParameter(cmd, "PPALABRAS_CLAVES", DbType.String, Objeto.palabrasClaves);
+        //            dbDatos.AddInParameter(cmd, "PID_ESTADO", DbType.Int32, Objeto.idEstado);
+
+        //            dbDatos.ExecuteNonQuery(cmd);
+        //        }
+        //    }
+        //    catch(Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
+
+        public void dao_Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto, out Int32 idObjeto)
         {
             try
             {
@@ -27,6 +47,8 @@ namespace Dao_ObjectFinder.Objeto
                     dbDatos.AddInParameter(cmd, "PPALABRAS_CLAVES", DbType.String, Objeto.palabrasClaves);
                     dbDatos.AddInParameter(cmd, "PID_ESTADO", DbType.Int32, Objeto.idEstado);
 
+                    idObjeto = Int32.Parse(dbDatos.GetParameterValue(cmd, "PID_OBJETO").ToString());
+
                     dbDatos.ExecuteNonQuery(cmd);
                 }
             }
@@ -34,7 +56,7 @@ namespace Dao_ObjectFinder.Objeto
             {
                 throw;
             }
-       }
+        }
 
         public void dao_Actualizar_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto)
         {
@@ -110,7 +132,7 @@ namespace Dao_ObjectFinder.Objeto
 
                     using(IDataReader dbReader = dbDatos.ExecuteReader(cmd))
                     {
-                           
+
                         while(dbReader.Read())
                         {
                             objObjeto = new Entities_ObjectFinder.Objeto.entObjeto();
@@ -237,5 +259,5 @@ namespace Dao_ObjectFinder.Objeto
         }
 
     }
-}	
+}
 

@@ -49,11 +49,25 @@ namespace Wcf_ObjectFinder
             }
         }
 
-        public void Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto)
+        //public void Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto)
+        //{
+        //    try
+        //    {
+        //        Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Objeto(Objeto);
+        //    }
+        //    catch(FaultException ex)
+        //    {
+        //        throw new FaultException(ex.Message);
+        //    }
+        //}
+
+        public void Crear_Objeto(Entities_ObjectFinder.Objeto.entObjeto Objeto, out Int32 idObjeto)
         {
             try
             {
-                Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Objeto(Objeto);
+                idObjeto = 0;
+
+                Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Objeto(Objeto, out idObjeto);
             }
             catch(FaultException ex)
             {
