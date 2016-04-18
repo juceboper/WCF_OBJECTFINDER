@@ -103,21 +103,26 @@ namespace Wcf_ObjectFinder
         {
             try
             {
-                //String SourceLoc  = "D:/Images/photo.png";
-                //FileStream fs = new FileStream(SourceLoc, FileMode.Open, FileAccess.Read);
+                String SourceLoc = "C:/Julio.png";
+                FileStream fs = new FileStream(SourceLoc, FileMode.Open, FileAccess.Read);
 
-                //// Create a byte array of file stream length
-                //byte[] ImageData = new byte[fs.Length];
+                // Create a byte array of file stream length
+                byte[] ImageData = new byte[fs.Length];
 
-                ////Read block of bytes from stream into the byte array
-                //fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
+                //Read block of bytes from stream into the byte array
+                fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
 
-                ////Close the File Stream
-                //fs.Close();
+                //Close the File Stream
+                fs.Close();
 
-                //Media.imagen = ImageData;
+                Media.imagen = ImageData;
+                Media.idCategoria = 1;
+                Media.idEstado = 1;
+                Media.idObjeto = 65;
+                Media.nombreImagen = fs.Name;
+                Media.tipoImagen = "jpg";
 
-                ////String DestinationLoc = "D:/Images/TestImage.jpg";
+                //String DestinationLoc = "D:/Images/TestImage.jpg";
                 Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Media(Media);
             }
             catch(FaultException ex)
