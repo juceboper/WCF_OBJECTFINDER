@@ -8,7 +8,7 @@ using System.Text;
 namespace Wcf_ObjectFinder
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IWsObjectFinder" en el código y en el archivo de configuración a la vez.
-    [ServiceContract(Namespace = "http://localhost:8080/Wcf_ObjectFinder/Servicio/")]
+    [ServiceContract(Namespace = "http://localhost:51565/Wcf_ObjectFinder/Servicio/")]
     public interface IWsObjectFinder
     {
         //-----------------INSERT-----------------------------//
