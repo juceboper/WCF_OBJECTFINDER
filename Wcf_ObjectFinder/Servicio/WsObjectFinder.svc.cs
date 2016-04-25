@@ -10,7 +10,7 @@ namespace Wcf_ObjectFinder
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "WsObjectFinder" en el código, en svc y en el archivo de configuración a la vez.
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione WsObjectFinder.svc o WsObjectFinder.svc.cs en el Explorador de soluciones e inicie la depuración.
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, Namespace = "http://localhost:8080/Wcf_ObjectFinder/Servicio/")]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, Namespace = "http://localhost:51565/Wcf_ObjectFinder/Servicio/")]
     public class WsObjectFinder:IWsObjectFinder
     {
         public void Crear_Usuario(Entities_ObjectFinder.Usuario.entUsuario Usuario)
@@ -103,24 +103,24 @@ namespace Wcf_ObjectFinder
         {
             try
             {
-                String SourceLoc = "C:/Julio.png";
-                FileStream fs = new FileStream(SourceLoc, FileMode.Open, FileAccess.Read);
+                //String SourceLoc = "C:/Julio.png";
+                //FileStream fs = new FileStream(SourceLoc, FileMode.Open, FileAccess.Read);
 
-                // Create a byte array of file stream length
-                byte[] ImageData = new byte[fs.Length];
+                //// Create a byte array of file stream length
+                //byte[] ImageData = new byte[fs.Length];
 
-                //Read block of bytes from stream into the byte array
-                fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
+                ////Read block of bytes from stream into the byte array
+                //fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
 
-                //Close the File Stream
-                fs.Close();
+                ////Close the File Stream
+                //fs.Close();
 
-                Media.imagen = ImageData;
-                Media.idCategoria = 1;
-                Media.idEstado = 1;
-                Media.idObjeto = 65;
-                Media.nombreImagen = fs.Name;
-                Media.tipoImagen = "jpg";
+                //Media.imagen = ImageData;
+                //Media.idCategoria = 1;
+                //Media.idEstado = 1;
+                //Media.idObjeto = 65;
+                //Media.nombreImagen = fs.Name;
+                //Media.tipoImagen = "jpg";
 
                 //String DestinationLoc = "D:/Images/TestImage.jpg";
                 Business_ObjectFinder.Logica.Log_Objectfinder.log_Crear_Media(Media);
